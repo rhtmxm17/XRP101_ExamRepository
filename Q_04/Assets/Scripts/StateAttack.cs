@@ -45,8 +45,15 @@ public class StateAttack : PlayerState
         IDamagable damagable;
         foreach (Collider col in cols)
         {
-            damagable = col.GetComponent<IDamagable>();
-            damagable.TakeHit(Controller.AttackValue);
+            // 대상이 적이 아닐경우 예외 처리
+            if (col.CompareTag("Player"))
+                continue;
+
+            // 대상이 IDamagable를 가지고 있을 경우에만 TakeHit 호출
+            if (col.TryGetComponent(out damagable))
+            {
+                damagable.TakeHit(Controller.AttackValue);
+            }
         }
     }
 

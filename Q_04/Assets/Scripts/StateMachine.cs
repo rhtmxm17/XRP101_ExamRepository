@@ -38,6 +38,7 @@ public class StateMachine
     public void ChangeState(StateType state)
     {
         CurrentState.Exit();
+        Debug.Log($"{CurrentType}->{state}");
         CurrentType = state;
         CurrentState.Enter();
     }
