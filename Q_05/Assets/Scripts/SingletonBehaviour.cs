@@ -20,6 +20,13 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
     protected void SingletonInit()
     {
+        // 이미 인스턴스가 존재할 경우 신규 생성된 쪽을 제거
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }    
+
         _instance = GetComponent<T>();
         DontDestroyOnLoad(gameObject);
     }
