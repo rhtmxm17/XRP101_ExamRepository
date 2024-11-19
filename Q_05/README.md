@@ -35,3 +35,7 @@
 ### PopupController
 
 `Activate()`에서 `GameManager.Pause()`를 통해 `Time.timeScale`을 0으로 변경하고 있다. timeScale은 `WaitForSeconds`에도 영향을 미치기 때문에 코루틴이 완료되지 않는다.  
+
+### Singleton
+
+`SingletonBehaviour.SingletonInit()`의 싱글톤 초기화에서 이미 싱글톤 인스턴스가 존재할 경우의 처리가 누락되어있다.
