@@ -9,21 +9,23 @@ public class CubeManager : MonoBehaviour
     private CubeController _cubeController;
     private Vector3 _cubeSetPoint;
 
-    private void Awake()
-    {
-        SetCubePosition(3, 0, 3);
-    }
-
     private void Start()
     {
         CreateCube();
+        SetCubePosition(3, 0, 3);
     }
 
     private void SetCubePosition(float x, float y, float z)
     {
+        if (_cubeController == null)
+        {
+            Debug.Log("CubeController가 등록되지 않음");
+            return;
+        }
         _cubeSetPoint.x = x;
         _cubeSetPoint.y = y;
         _cubeSetPoint.z = z;
+        _cubeController.SetPoint = _cubeSetPoint;
         _cubeController.SetPosition();
     }
 
