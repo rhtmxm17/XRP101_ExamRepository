@@ -149,7 +149,7 @@ MonoBehaviour:
   _range: 15
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
 --- !u!1 &3127339600779516090
 GameObject:
   m_ObjectHideFlags: 0

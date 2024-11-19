@@ -82,6 +82,6 @@ public class PlayerController : MonoBehaviour
         if (input == Vector3.zero) return;
 
         Vector3 moveDirection = transform.forward * input.z + transform.right * input.x;
-        transform.position += moveDirection * _moveSpeed * Time.deltaTime;
+        transform.position += _moveSpeed * Time.deltaTime * moveDirection;
     }
 }

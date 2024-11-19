@@ -18,3 +18,8 @@
 ### 카메라 회전
 
 문제 프로젝트는 `PlayerController`가 PlayerCharacter의 y축 회전과 Muzzle의 x축 회전을 담당하며, 동시에 `CameraController`가 Muzzle의 transform을 자신의 것과 일치하게 만들고 있다. `CameraController`에서 FollowTarget의 위치를 카메라 위치로 옮기는 것이 아닌, 반대로 카메라위 위치를 FollowTarget의 위치로 옮기는 것이 원래 의도로 생각된다.  
+
+### 레이캐스트
+
+Ray의 방향에 origin의 Local 공간의 정면 방향이 아닌 World 공간의 정면 방향을 사용하고 있다.  
+`Physics.Raycast()`의 대상 레이어가 None으로 설정 되어있다.  
