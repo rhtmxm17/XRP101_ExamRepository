@@ -15,15 +15,14 @@ public class CustomObjectPool
     {
         PooledBehaviour target;
 
+        // 새로 추가된 PooledBehaviour도 Pop을 거치도록 변경
         if (_pool.Count == 0)
         {
-            target = AddObject();
+            AddObject();
             _poolSize++;
         }
-        else
-        {
-            target = _pool.Pop();
-        } 
+
+        target = _pool.Pop();
 
         target.gameObject.SetActive(true);
         

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [field: Range(0, 100)]
     public int Hp { get; private set; }
 
+    [SerializeField, Tooltip("사망시 비활성화 할 대상")] GameObject body;
+
     private AudioSource _audio;
 
     private void Awake()
@@ -33,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         _audio.Play();
-        gameObject.SetActive(false);
+
+        // 실제 게임이라면 사망 애니메이션 등의 상태 전환이 들어갈듯
+        body.SetActive(false);
+        this.enabled = false;
     }
 }

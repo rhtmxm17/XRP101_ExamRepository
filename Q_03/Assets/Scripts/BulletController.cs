@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BulletController : PooledBehaviour
 {
     [SerializeField] private float _force;
@@ -27,6 +28,7 @@ public class BulletController : PooledBehaviour
         if (other.CompareTag("Player"))
         {
             other
+                .attachedRigidbody // 플레이어의 기능 게임오브젝트 참조
                 .GetComponent<PlayerController>()
                 .TakeHit(_damageValue);
         }

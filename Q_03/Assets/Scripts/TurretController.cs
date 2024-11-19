@@ -25,6 +25,16 @@ public class TurretController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        // 범위를 벗어나면 공격 중단
+        if (other.CompareTag("Player") && _coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+    }
+
     private void Init()
     {
         _coroutine = null;
@@ -38,7 +48,8 @@ public class TurretController : MonoBehaviour
         {
             yield return _wait;
             
-            transform.rotation = Quaternion.LookRotation(new Vector3(
+            // 터렛 위치에서 플레이어를 바라보는 회전으로 수정
+            transform.rotation = Quaternion.LookRotation(-transform.position + new Vector3( 
                 target.position.x,
                 0,
                 target.position.z)
