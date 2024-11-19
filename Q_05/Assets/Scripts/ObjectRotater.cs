@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ObjectRotater : MonoBehaviour
 {
+    [SerializeField] float rotateSpeedMultiplier = 100f;
+
     private void Update()
     {
-        transform.Rotate(Vector3.up * GameManager.Intance.Score);
+        transform.Rotate(GameManager.Intance.Score * Time.deltaTime * rotateSpeedMultiplier * Vector3.up);
     }
 }
